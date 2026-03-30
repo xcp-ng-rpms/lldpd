@@ -10,7 +10,7 @@
 
 Name:     lldpd
 Version:  1.0.4
-Release:  1%{?dist}
+Release:  1.1%{?dist}
 Summary:  ISC-licensed implementation of LLDP
 
 License:  ISC
@@ -172,6 +172,9 @@ fi
 
 
 %changelog
+* Mon Mar 30 2026 Philippe Coval <philippe.coval@vates.tech> - 1.0.4-1.1
+- Rebuild with updated net-snmp (updated with OpenSSL 3)
+
 * Tue Aug 13 2019 James Hogarth <james.hogarth@gmail.com> - 1.0.4-1
 - Updated to new upstream release 1.0.4
 
