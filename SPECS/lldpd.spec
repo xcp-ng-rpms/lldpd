@@ -10,7 +10,7 @@
 
 Name:     lldpd
 Version:  1.0.4
-Release:  1.1%{?dist}
+Release:  1.1~XCPNG3122.1%{?dist}
 Summary:  ISC-licensed implementation of LLDP
 
 License:  ISC
