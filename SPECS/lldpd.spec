@@ -10,7 +10,7 @@
 
 Name:     lldpd
 Version:  1.0.4
-Release:  1.1%{?dist}
+Release:  1.2%{?dist}
 Summary:  ISC-licensed implementation of LLDP
 
 License:  ISC
@@ -21,6 +21,9 @@ Source2:  %{name}-tmpfiles
 Source3:  %{name}-fedora.sysconfig
 Source4:  %{name}-el6.init
 Source5:  %{name}-el7.service
+
+# XCP-ng patches
+Patch1000: Fix-heap-oob-read-in-vlan-decapsulation-memmove.patch
 
 BuildRequires: gcc
 BuildRequires: readline-devel
@@ -61,7 +64,7 @@ Summary: %{summary}
 %{name} development libraries and headers
 
 %prep
-%autosetup
+%autosetup -p1
 
 
 %build
@@ -75,6 +78,9 @@ Summary: %{summary}
 
 make %{?_smp_mflags}
 
+
+%check
+make %{?_smp_mflags} check
 
 %install
 %make_install
@@ -172,6 +178,10 @@ fi
 
 
 %changelog
+* Mon Jun 15 2026 Lucas Ravagnier <lucas.ravagnier@vates.tech> - 1.0.4-1.2
+- Fix heap OOB read in VLAN decapsulation memmove (CVE-2026-46433)
+- Enable testsuite
+
 * Mon Mar 30 2026 Philippe Coval <philippe.coval@vates.tech> - 1.0.4-1.1
 - Rebuild with updated net-snmp (updated with OpenSSL 3)
 
